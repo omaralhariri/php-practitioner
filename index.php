@@ -1,15 +1,45 @@
 <?php
+ 
 
-require "functions.php";
+class Task {
+    
+    public $description;
+    
+    public $completed = false;
 
-$animals = ["lion", "cat", "dog"];
+    public function __construct($description) 
+    {
+        // Automatically tigered on instantiation
+        $this->description = $description;
+    }
 
-// dd($animals);
+    public function complete()
+    {
+        $this->completed = true;
+    }
 
-$samAge = 13;
-$anasAge = 26;
-checkAge($samAge);
-checkAge($anasAge);
+    public function isComplete()
+    {
+        return $this->completed;
+    }
 
+    public function description()
+    {
+        return $this->description;
+    }
+}
+
+$tasks = [
+    new Task("Go to Wadi Shallaleh"),
+    new Task("Continue php-learning"),
+    new Task("Watch a movie")
+];
+
+$tasks[0]->complete();
+$tasks[2]->complete();
 
 require "index.view.php";
+
+
+
+
