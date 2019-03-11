@@ -12,9 +12,9 @@
     <?php foreach ($tasks as $task) : ?>
         <li>
             <?php if ($task->isComplete()) : ?> <!-- $task->completed; -->
-                <strike><?= $task->description(); ?></strike>
+                <strike><?= $task->description; ?></strike>
             <?php else: ?>
-                <?= $task->description(); ?> <!-- could use $task->description; -->
+                <?= $task->description; ?> <!-- could use $task->description; -->
             <?php endif; ?>
         </li>
     <?php endforeach; ?>
