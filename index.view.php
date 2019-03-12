@@ -7,14 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-<h1>To-Do list:</h1>
 <ul>
     <?php foreach ($tasks as $task) : ?>
         <li>
-            <?php if ($task->completed) : ?> <!-- $task->completed; -->
+            <?php if ($task->completed) : ?> 
                 <strike><?= $task->description; ?></strike>
             <?php else: ?>
-                <?= $task->description; ?> <!-- could use $task->description; -->
+                <?= $task->description; ?>
             <?php endif; ?>
         </li>
     <?php endforeach; ?>
