@@ -1,8 +1,9 @@
 <?php    
     
-$query = require "bootstrap.php";
+$query = require "core/bootstrap.php";
 
-$tasks = $query->selectAll("todos");
+require Router::load("routes.php")
 
-
-require "index.view.php";
+    ->direct(Request::uri());
+    // Chaining, ommitting ; to indicate the next line is part of the
+    // previous one.
