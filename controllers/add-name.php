@@ -2,11 +2,9 @@
 
 require "core/bootstrap.php";
 
-$username = $_POST["username"];
-$password = $_POST["password"];
+$app["database"]->insert("users", [
+    "username" => $_POST["username"],
+    "password" => $_POST["password"]
+]);
 
-$app["database"]->insert(
-                        "users",
-                        "username, password",
-                        "$username, $password"
-                        );
+header("Location: /");

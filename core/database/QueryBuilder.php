@@ -16,6 +16,24 @@ class QueryBuilder {
         return $statment->fetchAll(PDO::FETCH_CLASS);
     }
 
+    public function insert($table, $parameters)
+    {
+        $sql = sprintf(
+            "insert into %s (%s) values (%s)",
+            $table,
+            implode(", ", array_keys($parameters)),
+            ":".implode(", :", array_keys($parameters))
+        );
+        try {
+            $statment = $this->pdo->prepare($sql);
+            $statment->execute($parameters);
+        } catch (Exception $e) {
+            die ($e->getMessage());
+        }
+    }
+}
+
+   /* MY try to create a dynamic insert method
     public function insert($table, $columns, $values)
     {
         // Convert the string $values to an array
@@ -48,4 +66,4 @@ class QueryBuilder {
         // to an array for executation
         $statment->execute(explode(",", $values));
     }
-}
+}*/
